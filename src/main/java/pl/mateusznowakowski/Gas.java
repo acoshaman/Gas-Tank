@@ -7,11 +7,11 @@ import java.sql.*;
 @Getter
 @Setter
 public class Gas {
-//Parameters of gas
+    //Parameters of gas
     private String type;
     private double mass;
-     private double molarQuantity;
-     private double molarNumber;
+    private double molarQuantity;
+    private double molarNumber;
     private double temperature;
     private double pressure;
     private double volume;
@@ -48,51 +48,51 @@ public class Gas {
 
     protected ResultSet dbConnection( ) {
 
-            try {
-                Connection connection = DriverManager.getConnection(
-                        "jdbc:mysql://localhost:3306/gas-tank", "root", "entropia");
+        try {
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/gas-tank", "root", "entropia");
 
-                Statement statement = connection.createStatement();
+            Statement statement = connection.createStatement();
 
-                ResultSet readRecord = statement.executeQuery(
-                        "SELECT * FROM `gas-tank`.gas_param WHERE `type` = '" + type + "'");
-                if (readRecord.next()) {
-                    try {
-                        this.molarNumber = readRecord.getDouble(3);
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("Unfortunately, we occur " + nfe + " in molar numbers column.");}
+            ResultSet readRecord = statement.executeQuery(
+                    "SELECT * FROM `gas-tank`.gas_param WHERE `type` = '" + type + "'");
+            if (readRecord.next()) {
+                try {
+                    this.molarNumber = readRecord.getDouble(3);
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Unfortunately, we occur " + nfe + " in molar numbers column.");}
 
-                    try {
-                        this.specHeatCap = readRecord.getDouble(4);
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("Unfortunately, we occur " + nfe + " in specific heat capacitys column.");}
+                try {
+                    this.specHeatCap = readRecord.getDouble(4);
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Unfortunately, we occur " + nfe + " in specific heat capacitys column.");}
 
-                    try {
-                        this.heatCapRatio = readRecord.getDouble(5);
-                    } catch (NumberFormatException nfe) {
-                        System.out.println("Unfortunately, we occur " + nfe + " in heat capcity ratios column.");
-                    }finally {
-                        if(readRecord != null) {
-                            readRecord.close();
-                        }
-                        if (statement != null) {
-                            statement.close();
-                        }
-                        if(connection != null) {
-                            connection.close();
-                        }
+                try {
+                    this.heatCapRatio = readRecord.getDouble(5);
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Unfortunately, we occur " + nfe + " in heat capcity ratios column.");
+                }finally {
+                    if(readRecord != null) {
+                        readRecord.close();
+                    }
+                    if (statement != null) {
+                        statement.close();
+                    }
+                    if(connection != null) {
+                        connection.close();
                     }
                 }
-                return readRecord;
             }
-            catch (SQLException sqle) {
-                System.out.println("unfotunately we occur " + sqle + " , so problem with database.");
-                return null;
-            }
-
-
-
+            return readRecord;
         }
+        catch (SQLException sqle) {
+            System.out.println("unfotunately we occur " + sqle + " , so problem with database.");
+            return null;
+        }
+
+
+
+    }
 
 
     protected void evaluatePressure() {

@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2f426c37-80fc-4567-8ec5-05197af650a3" name="Changes" comment="Created fields and constructors for IsolatedTank, before testing.">
-      <change afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Round.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/RoundTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Gas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Gas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/Help.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/IsolatedTank.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/IsolatedTank.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -62,20 +68,7 @@
       <recent name="pl.mateusznowakowski" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GasTest">
-    <configuration name="Help" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.Help" />
-      <module name="Tank" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.mateusznowakowski.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.RoundTest">
     <configuration name="GasTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Tank" />
       <extension name="coverage">
@@ -87,38 +80,6 @@
       <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
       <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.GasTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GasTest.dbConnectionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Tank" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.mateusznowakowski.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
-      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.GasTest" />
-      <option name="METHOD_NAME" value="dbConnectionTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GasTest.dbConnectionTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Tank" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.mateusznowakowski.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
-      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.GasTest" />
-      <option name="METHOD_NAME" value="dbConnectionTest2" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -139,13 +100,60 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="IsolatedTankTest.dbConnectorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Tank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.mateusznowakowski.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
+      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.IsolatedTankTest" />
+      <option name="METHOD_NAME" value="dbConnectorTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoundTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Tank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.mateusznowakowski.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
+      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.RoundTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RoundTest.roundToThreeDecimal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Tank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.mateusznowakowski.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
+      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.RoundTest" />
+      <option name="METHOD_NAME" value="roundToThreeDecimal" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RoundTest" />
+        <item itemvalue="JUnit.RoundTest.roundToThreeDecimal" />
+        <item itemvalue="JUnit.IsolatedTankTest.dbConnectorTest" />
         <item itemvalue="JUnit.GasTest" />
         <item itemvalue="JUnit.GasTest.dbConnectionTestSecondConstructor" />
-        <item itemvalue="Application.Help" />
-        <item itemvalue="JUnit.GasTest.dbConnectionTest" />
-        <item itemvalue="JUnit.GasTest.dbConnectionTest2" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +232,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680978400298</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Created fields and constructors for IsolatedTank, before testing.">
+      <created>1680984549585</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1680984549585</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
