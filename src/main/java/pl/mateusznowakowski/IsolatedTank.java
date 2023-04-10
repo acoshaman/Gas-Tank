@@ -4,23 +4,23 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.List;
+
 @Getter
 @Setter
 public class IsolatedTank {
-    private double volume ;
+    private double totalVolume;
 
-    private double temperature;
+    private double totalTemperature;
 
-    private double pressure;
+    private double totalPressure;
 
-    private double molarQuantity;
+    private double totalMolarQuantity;
 
-    private double mass;
+    private double totalMass;
 
-    private double specHeatCap;
+    private double totalSpecHeatCap;
 
-    private double heatCapRatio;
+    private double totalHeatCapRatio;
 
     private final double gasConstant = 8.3145;
 
@@ -32,13 +32,13 @@ public class IsolatedTank {
 
     // Primitive constructor
     public IsolatedTank(double volume) {
-        this.volume = volume;
-        this.temperature = 0;
-        this.pressure = 0;
-        this.molarQuantity = 0;
-        this.mass =0;
-        this.specHeatCap = 0;
-        this.heatCapRatio = 0;
+        this.totalVolume = volume;
+        this.totalTemperature = 0;
+        this.totalPressure = 0;
+        this.totalMolarQuantity = 0;
+        this.totalMass =0;
+        this.totalSpecHeatCap = 0;
+        this.totalHeatCapRatio = 0;
 
     }
 
@@ -47,15 +47,40 @@ public class IsolatedTank {
         AllGases.add(firstGas);
         AllTypes.add(firstGas.getType());
         AllMolarNumbers.add(firstGas.getMolarNumber());
-        this.volume = firstGas.getVolume();
-        this.temperature = firstGas.getTemperature();
-        this.pressure = firstGas.getPressure();
-        this.molarQuantity = firstGas.getMolarQuantity();
-        this.mass = firstGas.getMass();
-        this.specHeatCap = firstGas.getSpecHeatCap();
-        this.heatCapRatio = firstGas.getHeatCapRatio();
+        this.totalVolume = firstGas.getVolume();
+        this.totalTemperature = firstGas.getTemperature();
+        this.totalPressure = firstGas.getPressure();
+        this.totalMolarQuantity = firstGas.getMolarQuantity();
+        this.totalMass = firstGas.getMass();
+        this.totalSpecHeatCap = firstGas.getSpecHeatCap();
+        this.totalHeatCapRatio = firstGas.getHeatCapRatio();
 
     }
+    public double temperatureFromIdealGasEquation( double pressure, double volume ,
+                                                   double molarQuantity) {
+        double temperature = (pressure*volume)/(molarQuantity*gasConstant);
+        return temperature;
+    }
+
+    public double pressureFromIdealGasEquation( double temperature, double volume,
+                                                double molarQuantity) {
+        double pressure = (molarQuantity*gasConstant*temperature)/volume;
+        return pressure;
+    }
+
+    public double volumeFromIdealGasEquation( double pressure, double temperature,
+                                              double molarQuantity) {
+        double volume = (molarQuantity*gasConstant*temperature)/pressure;
+        return volume;
+    }
+
+    public double molarQuantityFromIdealGasEquation( double pressure, double temperature,
+                                                      double volume) {
+        double molarQuantity = (pressure * volume) / (gasConstant * temperature);
+        return molarQuantity;
+    }
+
+
 
 
 

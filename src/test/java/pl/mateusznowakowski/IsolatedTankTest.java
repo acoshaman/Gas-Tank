@@ -1,7 +1,5 @@
 package pl.mateusznowakowski;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,20 +9,36 @@ class IsolatedTankTest {
 
 
     @Test
-    void dbConnectorTest() {
+    void extensiveConstructorTest() {
         IsolatedTank neon = new IsolatedTank("neon", 1, 300, 0.1);
         Gas firstGas = neon.getAllGases().get(0);
         assertEquals(firstGas.getType(), neon.getAllTypes().get(0));
-        assertEquals(firstGas.getMass(), neon.getMass());
-        assertEquals(firstGas.getPressure(), neon.getPressure());
-        assertEquals(firstGas.getTemperature(), neon.getTemperature());
-        assertEquals(firstGas.getMolarQuantity(), neon.getMolarQuantity());
-        assertEquals(firstGas.getVolume(), neon.getVolume());
+        assertEquals(firstGas.getMass(), neon.getTotalMass());
+        assertEquals(firstGas.getPressure(), neon.getTotalPressure());
+        assertEquals(firstGas.getTemperature(), neon.getTotalTemperature());
+        assertEquals(firstGas.getMolarQuantity(), neon.getTotalMolarQuantity());
+        assertEquals(firstGas.getVolume(), neon.getTotalVolume());
         assertEquals(firstGas.getMolarNumber(), neon.getAllMolarNumbers().get(0));
-        assertEquals(firstGas.getSpecHeatCap(), neon.getSpecHeatCap());
-        assertEquals(firstGas.getHeatCapRatio(), neon.getHeatCapRatio());
+        assertEquals(firstGas.getSpecHeatCap(), neon.getTotalSpecHeatCap());
+        assertEquals(firstGas.getHeatCapRatio(), neon.getTotalHeatCapRatio());
 
     }
 
 
+    @Test
+    void temperatureFromIdealGasEquation() {
+
+    }
+
+    @Test
+    void pressureFromIdealGasEquation() {
+    }
+
+    @Test
+    void volumeFromIdealGasEquation() {
+    }
+
+    @Test
+    void molarQuantityFromIdealGasEquation() {
+    }
 }
