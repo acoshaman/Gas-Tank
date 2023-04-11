@@ -6,18 +6,8 @@ import lombok.Setter;
 import java.sql.*;
 @Getter
 @Setter
-public class Gas {
+public class Gas extends IdealGas {
     //Parameters of gas
-    private String type;
-    private double mass;
-    private double molarQuantity;
-    private double molarNumber;
-    private double temperature;
-    private double pressure;
-    private double volume;
-    private double specHeatCap;
-    private double heatCapRatio;
-    private final double gasConstant = 8.3145;
 
     public Gas() {
     }
@@ -27,15 +17,18 @@ public class Gas {
         dbConnection();
     }
 
-    public Gas(String type, double molarQuantity, double temperature, double volume) {
+    public Gas(String type,  double temperature, double volume,double molarQuantity) {
 
         this.type = type;
         this.molarQuantity = molarQuantity;
         this.temperature = temperature;
         this.volume = volume;
+        this.pressure = pressureFromIdealGasEquation();
         dbConnection();
-        evaluatePressure();
-        evaluateMass();
+        this.mass = massFromMolarParameters();
+
+//        evaluatePressure();
+//        evaluateMass();
         try {isDataAreCorrect();}
         catch (NegativeNumberException nnee) {
             System.out.println(nnee);

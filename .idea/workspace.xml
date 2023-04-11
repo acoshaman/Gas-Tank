@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f426c37-80fc-4567-8ec5-05197af650a3" name="Changes" comment="Testing class for IsolatedTank created and checked. Created Round class and testing class for this class.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IdealGas.java" afterDir="false" />
+    <list default="true" id="2f426c37-80fc-4567-8ec5-05197af650a3" name="Changes" comment="Start of attempting closing ideal gas object into abstract class IdealGas.">
+      <change afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IdealGasTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Gas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Gas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IdealGas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IdealGas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Round.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Round.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/GasTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/GasTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/RoundTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/RoundTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/Gas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/Gas.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/IsolatedTank.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/IsolatedTank.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,14 +25,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
+    <option name="WARN_ABOUT_DETACHED_HEAD" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -65,7 +72,38 @@
       <recent name="pl.mateusznowakowski" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GasTest">
+  <component name="RunManager" selected="JUnit.RoundTest">
+    <configuration name="DbInterfaceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Tank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.mateusznowakowski.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
+      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.DbInterfaceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DbInterfaceTest.readRecordTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Tank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.mateusznowakowski.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
+      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.DbInterfaceTest" />
+      <option name="METHOD_NAME" value="readRecordTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GasTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Tank" />
       <extension name="coverage">
@@ -81,23 +119,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GasTest.dbConnectionTestSecondConstructor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Tank" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.mateusznowakowski.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
-      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.GasTest" />
-      <option name="METHOD_NAME" value="dbConnectionTestSecondConstructor" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IsolatedTankTest.dbConnectorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IsolatedTankTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Tank" />
       <extension name="coverage">
         <pattern>
@@ -107,8 +129,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
       <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.IsolatedTankTest" />
-      <option name="METHOD_NAME" value="dbConnectorTest" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -128,29 +149,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RoundTest.roundToThreeDecimal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Tank" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.mateusznowakowski.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
-      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.RoundTest" />
-      <option name="METHOD_NAME" value="roundToThreeDecimal" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GasTest" />
         <item itemvalue="JUnit.RoundTest" />
-        <item itemvalue="JUnit.RoundTest.roundToThreeDecimal" />
-        <item itemvalue="JUnit.IsolatedTankTest.dbConnectorTest" />
-        <item itemvalue="JUnit.GasTest.dbConnectionTestSecondConstructor" />
+        <item itemvalue="JUnit.GasTest" />
+        <item itemvalue="JUnit.DbInterfaceTest.readRecordTest" />
+        <item itemvalue="JUnit.DbInterfaceTest" />
+        <item itemvalue="JUnit.IsolatedTankTest" />
       </list>
     </recent_temporary>
   </component>
@@ -243,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680990080953</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Start of attempting closing ideal gas object into abstract class IdealGas.">
+      <created>1681136340166</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1681136340166</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,7 +280,8 @@
     <MESSAGE value="Created constructors for IsolatedTank, before testing." />
     <MESSAGE value="Created fields and constructors for IsolatedTank, before testing." />
     <MESSAGE value="Testing class for IsolatedTank created and checked. Created Round class and testing class for this class." />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing class for IsolatedTank created and checked. Created Round class and testing class for this class." />
+    <MESSAGE value="Start of attempting closing ideal gas object into abstract class IdealGas." />
+    <option name="LAST_COMMIT_MESSAGE" value="Start of attempting closing ideal gas object into abstract class IdealGas." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -282,6 +295,15 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="5" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java</url>
+          <line>32</line>
+          <properties class="pl.mateusznowakowski.IsolatedTankTest" method="pressureFromIdealGasEquation">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

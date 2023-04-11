@@ -25,7 +25,7 @@ class GasTest {
 
     @Test
     void dbConnectorTestSecondConstructor() {
-        var ammonia = new Gas("ammonia", 3, 350, 0.05);
+        var ammonia = new Gas("ammonia", 350, 0.05, 3);
         assertEquals(17.03,ammonia.getMolarNumber());
         assertEquals(28.03, ammonia.getSpecHeatCap());
         assertEquals(1.32, ammonia.getHeatCapRatio());
@@ -36,7 +36,7 @@ class GasTest {
     @Test
     void evaluatePressureTest() {
         Gas carbon_monoxide = new Gas(
-                "carbon monoxide", 2, 300, 0.0224);
+                "carbon monoxide", 300, 0.0224, 2);
         carbon_monoxide.evaluatePressure();
 
         assertEquals(222710, Math.round(carbon_monoxide.getPressure()));
@@ -44,7 +44,7 @@ class GasTest {
 
     @Test
     void evaluateMassTest() {
-        Gas nitrogen = new Gas("argon", 2.5, 300, 0.1);
+        Gas nitrogen = new Gas("argon", 300, 0.1, 2.5);
         nitrogen.evaluateMass();
         double mass = nitrogen.getMass();
         double number = (double) Math.round(mass * 10000000) / 10000000;
@@ -98,5 +98,34 @@ class GasTest {
         Gas gas = new Gas(" ", 1, 300, 0);
         assertThrows(NegativeNumberException.class, () -> {
             gas.isDataAreCorrect();});
+    }
+
+
+    @Test
+    void pressureFromIdealGasEquation() {
+        Gas argon = new Gas("argon", 320, 0.2, 3);
+        assertEquals(39909.6, argon.pressureFromIdealGasEquation());
+    }
+
+    @Test
+    void volumeFromIdealGasEquation() {
+        Gas argon = new Gas("argon", 320, 0.2, 3);
+        argon.pressureFromIdealGasEquation();
+        assertEquals(0.2, argon.volumeFromIdealGasEquation());
+    }
+
+    @Test
+    void molarQuantityFromIdealGasEquation() {
+        Gas argon = new Gas("argon", 320, 0.2, 3);
+        argon.pressureFromIdealGasEquation();
+        assertEquals(3, Math.round(argon.molarQuantityFromIdealGasEquation()));
+    }
+
+    @Test
+    void massFromMolarParameters() {
+        Gas argon = new Gas("argon", 320, 0.2, 3);
+        double mass = argon.massFromMolarParameters();
+        assertEquals(0.11805, Round.roundToFiveDecimal(mass));
+
     }
 }
