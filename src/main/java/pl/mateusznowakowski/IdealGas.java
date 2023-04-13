@@ -50,4 +50,13 @@ public abstract class IdealGas {
         double mass = (molarNumber * molarQuantity)/1000;
         return mass;
     }
+
+    public abstract void displayParameters();
+
+    public double pressureFromIdealGasEquation(double summaryVolume) {
+        double pressure;
+        pressure = (molarQuantity * gasConstant * temperature)/ summaryVolume;
+        return pressure;
+    }
+
 }

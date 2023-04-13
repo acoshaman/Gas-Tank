@@ -26,9 +26,6 @@ public class Gas extends IdealGas {
         this.pressure = pressureFromIdealGasEquation();
         dbConnection();
         this.mass = massFromMolarParameters();
-
-//        evaluatePressure();
-//        evaluateMass();
         try {isDataAreCorrect();}
         catch (NegativeNumberException nnee) {
             System.out.println(nnee);

@@ -10,6 +10,7 @@ import java.util.Iterator;
 @Setter
 public class IsolatedTank extends IdealGas {
 
+    protected double totalWork;
 
 
     private ArrayList<String> allTypes = new ArrayList<String>();
@@ -49,12 +50,49 @@ public class IsolatedTank extends IdealGas {
 
     public void addGasToTank(String type, double temperature, double volume, double molarQuantity) {
         Gas nextGas = new Gas(type, temperature, volume, molarQuantity);
-
         allGases.add(nextGas);
-
-
+        double summaryVolume = nextGas.volume + this.volume;
+        this.specHeatCap = averageSpecHeatCap();
+        this.heatCapRatio = averageHeatCapRatio();
+        this.molarQuantity = totalMolarQuantity();
+        this.temperature = evaluateTemperatureWhileMixing(temperature, nextGas.temperature,
+                summaryHeatCap(allGases), heatCap(nextGas));
+        double initialTemperature = this.temperature;
+        this.pressure = pressureFromIdealGasEquation(summaryVolume);
+        this.pressure = finalPressureAdiabaticConversion(summaryVolume, this.volume,
+                pressure, heatCapRatio);
+        this.temperature = temperatureFromIdealGasEquation();
+        this.totalWork += heatOfAdiabaticConversion(initialTemperature, this.temperature, this.specHeatCap );
+        this.mass = totalMass();
 
     }
+
+    public void displayComposition() {
+        for(Iterator i = allGases.iterator(); i.hasNext();) {
+            Gas gas = (Gas) i.next();
+            System.out.println("Compound: " + gas.type + " | Molar quantity: " + gas.molarQuantity + " [mol]");
+        }
+
+    }
+    public void displayParameters() {
+        System.out.println("-- COMPOSITION OF MIXTURE --");
+        displayComposition();
+        System.out.println("-- PARAMETERS OF MIXTURE --");
+        System.out.println("Mass[kg}: " +mass);
+        System.out.println("Molar quantity[mol]: " +molarQuantity);
+        System.out.println("Molar number[g/mol]: " + molarNumber);
+        System.out.println("Temperature[K]: " + temperature);
+        System.out.println("Pressure[Pa]: " + pressure);
+        System.out.println("Volume[m^3]: " + volume);
+        System.out.println("Heat capacity[J/(mol*K)]: " + specHeatCap);
+        System.out.println("Heat capacity ratio[1]: " + heatCapRatio);
+        System.out.println("Total work: " + totalWork);
+
+    }
+
+
+
+
     public double totalMolarQuantity() {
         double total = 0;
         for(Iterator i = allGases.iterator(); i.hasNext();) {
@@ -62,6 +100,16 @@ public class IsolatedTank extends IdealGas {
             total += gas.molarQuantity;
         }
         return total;
+    }
+
+    public double totalMass() {
+        double total = 0;
+        for(Iterator i = allGases.iterator(); i.hasNext();) {
+            Gas gas = (Gas) i.next();
+            total += gas.molarQuantity * gas.molarNumber;
+        }
+        return total/1000;
+
     }
     public double averageSpecHeatCap() {
         double average =0;
@@ -85,8 +133,8 @@ public class IsolatedTank extends IdealGas {
 
     }
 
-    public double heatCap(double specHeatCap, double molarQuantity) {
-        double heatCap = specHeatCap * molarQuantity;
+    public double heatCap(Gas gas) {
+        double heatCap = gas.specHeatCap * gas.molarQuantity;
         return heatCap;
     }
 
@@ -94,7 +142,7 @@ public class IsolatedTank extends IdealGas {
         double heat = 0;
         for( Iterator i = componentList.iterator(); i.hasNext();) {
             Gas gas = (Gas) i.next();
-            heat += heatCap(gas.specHeatCap, gas.molarQuantity);
+            heat += heatCap(gas);
         }
         return heat;
     }
@@ -126,20 +174,14 @@ public class IsolatedTank extends IdealGas {
         double finalPressure = initialPressure * Math.pow(initialToFinalVolumeRatio, heatCapRatio);
         return finalPressure;
     }
-    public double heatOfAdiabaticC(double initialTemperature, double finalTemperature,
+    public double heatOfAdiabaticConversion(double initialTemperature, double finalTemperature,
                                    double specHeatCap) {
         double heat = specHeatCap*(finalTemperature - initialTemperature);
         return heat;
     }
 
-    public static void main(String[] args) {
-        IsolatedTank tank = new IsolatedTank("argon", 320, 0.2,
-                                                3);
-        double mol = tank.molarNumber;
-        double mo = tank.molarQuantity;
-        System.out.println(mol);
-        System.out.println(mo);
-    }
+
+
 
 
 

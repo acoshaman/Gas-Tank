@@ -23,6 +23,7 @@ class IsolatedTankTest {
         assertEquals(firstGas.getHeatCapRatio(), neon.getHeatCapRatio());
 
     }
+
     @Test
     void temperatureFromIdealGasEquation() {
 
@@ -60,7 +61,7 @@ class IsolatedTankTest {
     @Test
     void totalMolarQuantityTest() {
         IsolatedTank isolatedTank = new IsolatedTank(1);
-        isolatedTank.addGasToTank("hydrogen", 300, 0.1, 1 );
+        isolatedTank.addGasToTank("hydrogen", 300, 0.1, 1);
         isolatedTank.addGasToTank("nitrogen", 200, 0.7, 6);
         isolatedTank.addGasToTank("oxygen", 400, 0.3, 6.5);
         assertEquals(13.5, Round.roundToThreeDecimal(isolatedTank.totalMolarQuantity()));
@@ -69,7 +70,7 @@ class IsolatedTankTest {
     @Test
     void averageSpecHeatCapTest() {
         IsolatedTank isolatedTank = new IsolatedTank(1);
-        isolatedTank.addGasToTank("hydrogen", 300, 0.1, 1 );
+        isolatedTank.addGasToTank("hydrogen", 300, 0.1, 1);
         isolatedTank.addGasToTank("nitrogen", 200, 0.7, 6);
         isolatedTank.addGasToTank("oxygen", 400, 0.3, 6.5);
         assertEquals(20.837, Round.roundToThreeDecimal(isolatedTank.averageSpecHeatCap()));
@@ -78,7 +79,7 @@ class IsolatedTankTest {
     @Test
     void averageHeatCapRatioTest() {
         IsolatedTank isolatedTank = new IsolatedTank(1);
-        isolatedTank.addGasToTank("hydrogen", 300, 0.1, 1 );
+        isolatedTank.addGasToTank("hydrogen", 300, 0.1, 1);
         isolatedTank.addGasToTank("nitrogen", 200, 0.7, 6);
         isolatedTank.addGasToTank("helium", 400, 0.3, 6.5);
         assertEquals(1.525, Round.roundToThreeDecimal(isolatedTank.averageHeatCapRatio()));
@@ -91,6 +92,7 @@ class IsolatedTankTest {
                 300, 15.25, 10.4);
         assertEquals(283.95, Round.roundToTwoDecimal(newTemperature));
     }
+
     @Test
     void evaluateTemperatureWhileMixingTestWithEmptyTank() {
         IsolatedTank isolatedTank = new IsolatedTank(1);
@@ -98,5 +100,17 @@ class IsolatedTankTest {
                 300, 0, 10.4);
         assertEquals(300, Round.roundToZeroDecimal(newTemperature));
     }
+
+
+    @Test
+    void finalPressureAdiabaticConversionTest() {
+        IsolatedTank tank = new IsolatedTank(0.1);
+        double result = tank.finalPressureAdiabaticConversion(0.2,
+                0.1, 100000, 1.4);
+        assertEquals(263901.58, Round.roundToTwoDecimal(result));
+
+    }
 }
+
+
 
