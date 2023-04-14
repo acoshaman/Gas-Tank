@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f426c37-80fc-4567-8ec5-05197af650a3" name="Changes" comment="End of day, created functional IdealGas abstract class, most of thermodynamic's calculational methods done.">
-      <change afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/Main.java" afterDir="false" />
+    <list default="true" id="2f426c37-80fc-4567-8ec5-05197af650a3" name="Changes" comment="Preliminary checking results.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/HistoryOfProcess" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Gas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Gas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IdealGas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IdealGas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/Gas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/Gas.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/IsolatedTank.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/IsolatedTank.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/mateusznowakowski/GasTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/mateusznowakowski/GasTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,20 +41,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "/Users/mateusznowakowski/Documents/JAVA/Tank",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mateusznowakowski/Documents/JAVA/Tank&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -259,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681175276030</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Preliminary checking results.">
+      <created>1681424822145</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1681424822145</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -286,7 +289,8 @@
     <MESSAGE value="Testing class for IsolatedTank created and checked. Created Round class and testing class for this class." />
     <MESSAGE value="Start of attempting closing ideal gas object into abstract class IdealGas." />
     <MESSAGE value="End of day, created functional IdealGas abstract class, most of thermodynamic's calculational methods done." />
-    <option name="LAST_COMMIT_MESSAGE" value="End of day, created functional IdealGas abstract class, most of thermodynamic's calculational methods done." />
+    <MESSAGE value="Preliminary checking results." />
+    <option name="LAST_COMMIT_MESSAGE" value="Preliminary checking results." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -298,22 +302,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java</url>
-          <line>105</line>
+          <line>120</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java</url>
-          <line>53</line>
+          <line>60</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java</url>
-          <line>60</line>
+          <line>72</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java</url>
-          <line>61</line>
+          <line>75</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
@@ -331,7 +335,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java</url>
-          <line>50</line>
+          <line>55</line>
           <properties class="pl.mateusznowakowski.IsolatedTank" method="addGasToTank">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

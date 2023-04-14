@@ -3,6 +3,7 @@ package pl.mateusznowakowski;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -11,6 +12,10 @@ import java.util.Iterator;
 public class IsolatedTank extends IdealGas {
 
     protected double totalWork;
+    protected double temporaryVolume;
+
+    protected double temporaryTemperature;
+    protected double temporaryPressure;
 
 
     private ArrayList<String> allTypes = new ArrayList<String>();
@@ -49,21 +54,31 @@ public class IsolatedTank extends IdealGas {
     }
 
     public void addGasToTank(String type, double temperature, double volume, double molarQuantity) {
+        // This state reperesent cylinder connected to tank, but with closed valve.
         Gas nextGas = new Gas(type, temperature, volume, molarQuantity);
         allGases.add(nextGas);
-        double summaryVolume = nextGas.volume + this.volume;
+        // Summary volume of filled cylinder and tank.
+        temporaryVolume = nextGas.volume + this.volume;
+        // Special heat capacity and heat capacity ratio of mixture,
+        // as weighted average according to molar composition.
         this.specHeatCap = averageSpecHeatCap();
         this.heatCapRatio = averageHeatCapRatio();
+        // Tolar molar quantity and mass of gases compounds.
         this.molarQuantity = totalMolarQuantity();
-        this.temperature = evaluateTemperatureWhileMixing(temperature, nextGas.temperature,
-                summaryHeatCap(allGases), heatCap(nextGas));
-        double initialTemperature = this.temperature;
-        this.pressure = pressureFromIdealGasEquation(summaryVolume);
-        this.pressure = finalPressureAdiabaticConversion(summaryVolume, this.volume,
-                pressure, heatCapRatio);
-        this.temperature = temperatureFromIdealGasEquation();
-        this.totalWork += heatOfAdiabaticConversion(initialTemperature, this.temperature, this.specHeatCap );
         this.mass = totalMass();
+        // Parameters below represents state when we opening valve between cylinder and tank,
+        // gas or gases diffuse freely and we have to evaluate temporary temperature and pressure.
+        this.temporaryTemperature = evaluateTemperatureWhileMixing(temperature, nextGas.temperature,
+                summaryHeatCap(allGases), heatCap(nextGas));
+        this.temporaryPressure = pressureFromIdealGasEquation(temporaryVolume);
+        // Parameters below represents state, when we compress gas from cylinder into tank,
+        // all process occurs without heat exchange with the surroundings.
+        this.pressure = finalPressureAdiabaticConversion(temporaryVolume, this.volume,
+                temporaryPressure, heatCapRatio);
+        this.temperature = temperatureFromIdealGasEquation();
+        // Evaluating of work done during compression.
+        this.totalWork += heatOfAdiabaticConversion(temporaryTemperature, this.temperature, this.specHeatCap );
+
 
     }
 
@@ -86,7 +101,7 @@ public class IsolatedTank extends IdealGas {
         System.out.println("Volume[m^3]: " + volume);
         System.out.println("Heat capacity[J/(mol*K)]: " + specHeatCap);
         System.out.println("Heat capacity ratio[1]: " + heatCapRatio);
-        System.out.println("Total work: " + totalWork);
+        System.out.println("Total work[j] : " + totalWork);
 
     }
 
@@ -180,14 +195,17 @@ public class IsolatedTank extends IdealGas {
         return heat;
     }
 
+    public void saveData(String nazwa) throws IOException {
+        PrintWriter file = null;
+        try {
 
+            file = new PrintWriter(new FileWriter(nazwa, true));
+            file.println("");
 
-
-
-
-
-
-
-
-
+        } finally {
+            if (file != null) {
+                file.close();
+            }
+        }
+    }
 }
