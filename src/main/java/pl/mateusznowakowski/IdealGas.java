@@ -53,7 +53,7 @@ public abstract class IdealGas {
 
     public abstract void displayParameters();
 
-    public double pressureFromIdealGasEquation(double summaryVolume) {
+    public double pressureFromIdealGasEquation(double summaryVolume, double temperature) {
         double pressure;
         pressure = (molarQuantity * gasConstant * temperature)/ summaryVolume;
         return pressure;

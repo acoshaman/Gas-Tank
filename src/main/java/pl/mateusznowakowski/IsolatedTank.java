@@ -57,6 +57,7 @@ public class IsolatedTank extends IdealGas {
         // This state reperesent cylinder connected to tank, but with closed valve.
         Gas nextGas = new Gas(type, temperature, volume, molarQuantity);
         allGases.add(nextGas);
+        allTypes.add(nextGas.getType());
         // Summary volume of filled cylinder and tank.
         temporaryVolume = nextGas.volume + this.volume;
         // Special heat capacity and heat capacity ratio of mixture,
@@ -70,7 +71,7 @@ public class IsolatedTank extends IdealGas {
         // gas or gases diffuse freely and we have to evaluate temporary temperature and pressure.
         this.temporaryTemperature = evaluateTemperatureWhileMixing(temperature, nextGas.temperature,
                 summaryHeatCap(allGases), heatCap(nextGas));
-        this.temporaryPressure = pressureFromIdealGasEquation(temporaryVolume);
+        this.temporaryPressure = pressureFromIdealGasEquation(temporaryVolume, temporaryTemperature);
         // Parameters below represents state, when we compress gas from cylinder into tank,
         // all process occurs without heat exchange with the surroundings.
         this.pressure = finalPressureAdiabaticConversion(temporaryVolume, this.volume,
@@ -95,11 +96,11 @@ public class IsolatedTank extends IdealGas {
         System.out.println("-- PARAMETERS OF MIXTURE --");
         System.out.println("Mass[kg}: " +mass);
         System.out.println("Molar quantity[mol]: " +molarQuantity);
-        System.out.println("Molar number[g/mol]: " + molarNumber);
+        System.out.println("Molar number[kg/mol]: " + (molarNumber / 1000));
         System.out.println("Temperature[K]: " + temperature);
         System.out.println("Pressure[Pa]: " + pressure);
         System.out.println("Volume[m^3]: " + volume);
-        System.out.println("Heat capacity[J/(mol*K)]: " + specHeatCap);
+        System.out.println("Special heat capacity[J/(mol*K)]: " + specHeatCap);
         System.out.println("Heat capacity ratio[1]: " + heatCapRatio);
         System.out.println("Total work[j] : " + totalWork);
 
@@ -200,8 +201,26 @@ public class IsolatedTank extends IdealGas {
         try {
 
             file = new PrintWriter(new FileWriter(nazwa, true));
-            file.println("");
+            file.println("Gonciarz");
 
+        } finally {
+            if (file != null) {
+                file.close();
+            }
+        }
+    }
+    public void readFile(String nazwa) throws IOException {
+
+        // odczyt wiersz po wierszu
+        BufferedReader file = null;
+        try {
+            file = new BufferedReader(new FileReader(nazwa));
+            System.out.println("\n\nOdczyt buforowany:\n");
+            String l = file.readLine();
+            while (l != null) {
+                System.out.println(l);
+                l = file.readLine();
+            }
         } finally {
             if (file != null) {
                 file.close();
