@@ -40,7 +40,9 @@ SELECT * FROM gas_param WHERE type = 'nitrogen';]]></console>
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="099ffe76-0b45-4b30-9e19-fb827c2bc8fe" object-ref="schemas/gas-tank/tables/gas_param" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="099ffe76-0b45-4b30-9e19-fb827c2bc8fe" dataset="gas-tank.gas_param" active-filter-id="EMPTY_FILTER" />

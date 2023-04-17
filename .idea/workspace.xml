@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f426c37-80fc-4567-8ec5-05197af650a3" name="Changes" comment="Beginning of new method which store data about process.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/ReadWrite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/ReadWriteTest.java" afterDir="false" />
+    <list default="true" id="2f426c37-80fc-4567-8ec5-05197af650a3" name="Changes" comment="Class which write and read file with process parameters almost has been done. Only few corrections are needed.">
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Gas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Gas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/HistoryOfProcess" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IdealGas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IdealGas.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/ReadWrite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/ReadWrite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/GasTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/GasTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/Gas.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/Gas.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/IsolatedTank.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/mateusznowakowski/IsolatedTank.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +73,7 @@
       <recent name="pl.mateusznowakowski" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.IsolatedTankTest.addGasToTankTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.Main" />
       <module name="Tank" />
@@ -83,7 +87,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IsolatedTankTest.finalPressureAdiabaticConversionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IsolatedTankTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Tank" />
       <extension name="coverage">
         <pattern>
@@ -93,66 +97,66 @@
       </extension>
       <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
       <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.IsolatedTankTest" />
-      <option name="METHOD_NAME" value="finalPressureAdiabaticConversionTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReadWriteTest.createTypeList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Tank" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.mateusznowakowski.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
-      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.ReadWriteTest" />
-      <option name="METHOD_NAME" value="createTypeList" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReadWriteTest.createTypeListEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Tank" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.mateusznowakowski.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
-      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.ReadWriteTest" />
-      <option name="METHOD_NAME" value="createTypeListEmpty" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RoundTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Tank" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.mateusznowakowski.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
-      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.RoundTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IsolatedTankTest.addGasToTankTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Tank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.mateusznowakowski.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
+      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.IsolatedTankTest" />
+      <option name="METHOD_NAME" value="addGasToTankTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IsolatedTankTest.averageMolarNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Tank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.mateusznowakowski.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
+      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.IsolatedTankTest" />
+      <option name="METHOD_NAME" value="averageMolarNumber" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IsolatedTankTest.heatOfAdiabaticConversionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Tank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.mateusznowakowski.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
+      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.IsolatedTankTest" />
+      <option name="METHOD_NAME" value="heatOfAdiabaticConversionTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.IsolatedTankTest.addGasToTankTest" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ReadWriteTest.createTypeList" />
-        <item itemvalue="JUnit.ReadWriteTest.createTypeListEmpty" />
-        <item itemvalue="JUnit.IsolatedTankTest.finalPressureAdiabaticConversionTest" />
-        <item itemvalue="JUnit.RoundTest" />
+        <item itemvalue="JUnit.IsolatedTankTest.averageMolarNumber" />
+        <item itemvalue="JUnit.IsolatedTankTest" />
+        <item itemvalue="JUnit.IsolatedTankTest.heatOfAdiabaticConversionTest" />
       </list>
     </recent_temporary>
   </component>
@@ -273,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681509801511</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Class which write and read file with process parameters almost has been done. Only few corrections are needed.">
+      <created>1681608042055</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1681608042055</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -302,7 +313,8 @@
     <MESSAGE value="End of day, created functional IdealGas abstract class, most of thermodynamic's calculational methods done." />
     <MESSAGE value="Preliminary checking results." />
     <MESSAGE value="Beginning of new method which store data about process." />
-    <option name="LAST_COMMIT_MESSAGE" value="Beginning of new method which store data about process." />
+    <MESSAGE value="Class which write and read file with process parameters almost has been done. Only few corrections are needed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Class which write and read file with process parameters almost has been done. Only few corrections are needed." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -312,48 +324,10 @@
           <line>59</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java</url>
-          <line>121</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java</url>
-          <line>61</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java</url>
-          <line>73</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="5" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java</url>
-          <line>33</line>
-          <properties class="pl.mateusznowakowski.IsolatedTankTest" method="pressureFromIdealGasEquation">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/IsolatedTank.java</url>
-          <line>55</line>
-          <properties class="pl.mateusznowakowski.IsolatedTank" method="addGasToTank">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ReadWrite {
-    int countSaves = 1;
-    String fileName;
+    private int countSaves = 1;
+    public String fileName;
 
 
     public ReadWrite() {
@@ -44,7 +44,6 @@ public class ReadWrite {
             }
         }
     }
-
     public void saveDataProcess(IsolatedTank tank) throws IOException {
         PrintWriter file = null;
         try {
@@ -71,7 +70,8 @@ public class ReadWrite {
                     "" + tank.getMolarQuantity() + "\n  - molar number[kg/mol]: " + (tank.getMolarNumber() / 1000) +
                     "\n  - temperature[K]: " + tank.getTemperature() + "\n  - pressure[Pa}: " + tank.getPressure() + "\n" +
                     "  - volume[m^3]: " + tank.getVolume() + "\n  - heat capacity[J/(mol*K)]: " + tank.getSpecHeatCap() + "\n" +
-                    "  - heat capacity ratio[1]: " + tank.getHeatCapRatio() + "\n\n" + "COMPRESION WORK[J}: " +tank.getTotalWork() + "\n\n" +
+                    "  - heat capacity ratio[1]: " + tank.getHeatCapRatio() + "\n\n" + "COMPRESION WORK[J}: " +tank.getCompresionWork()
+                    + "\n\n" + "TOTAL WORK[J}: " +tank.getTotalWork() + "\n\n" +
                     "----------------------------------------------------\n----------------------------------------------------\n");
             countSaves +=1;
 

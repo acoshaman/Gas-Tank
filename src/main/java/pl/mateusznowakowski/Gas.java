@@ -7,12 +7,9 @@ import java.sql.*;
 @Getter
 @Setter
 public class Gas extends IdealGas {
-    //Parameters of gas
-
-    public Gas() {
-    }
 
     public Gas(String type) {
+
         this.type = type;
         dbConnection();
     }
@@ -29,12 +26,8 @@ public class Gas extends IdealGas {
         try {isDataAreCorrect();}
         catch (NegativeNumberException nnee) {
             System.out.println(nnee);
-
         }
     }
-
-
-
 
     protected ResultSet dbConnection( ) {
 
@@ -84,16 +77,8 @@ public class Gas extends IdealGas {
 
     }
 
-
-    protected void evaluatePressure() {
-        this.pressure = (molarQuantity*gasConstant*temperature)/volume;
-    }
-
-    protected void evaluateMass() {
-        this.mass = (molarQuantity*molarNumber)/1000;
-    }
-
     protected void isDataAreCorrect() throws NegativeNumberException {
+
         if (type.isEmpty()) {
             NullPointerException nullPointerException = new NullPointerException();
             throw nullPointerException;
@@ -108,10 +93,10 @@ public class Gas extends IdealGas {
             NegativeNumberException negativeNumberException = new NegativeNumberException();
             throw negativeNumberException;
         }
-
     }
 
     public void displayParameters() {
+
         System.out.println("Type of gas: " +type);
         System.out.println("Mass[kg}: " +mass);
         System.out.println("Molar quantity[mol]: " +molarQuantity);

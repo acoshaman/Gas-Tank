@@ -11,20 +11,17 @@ import java.util.Iterator;
 @Setter
 public class IsolatedTank extends IdealGas {
 
-    protected double totalWork;
-    protected double temporaryVolume;
-
-    protected double temporaryTemperature;
-    protected double temporaryPressure;
-
-
+    private double totalWork;
+    private double temporaryVolume;
+    private double temporaryTemperature;
+    private double temporaryPressure;
+    private double compresionWork;
     private ArrayList<String> allTypes = new ArrayList<String>();
 
     private ArrayList<Double> allMolarNumbers = new ArrayList<Double>();
-
     private ArrayList<Gas> allGases = new ArrayList<Gas>();
 
-    // Primitive constructor
+    // Constructor which determinate only of his volume.
     public IsolatedTank(double volume) {
         this.volume = volume;
         this.temperature = 0;
@@ -35,64 +32,61 @@ public class IsolatedTank extends IdealGas {
         this.heatCapRatio = 0;
 
     }
-
-    public IsolatedTank(String type, double temperature, double volume, double molarQuantity) {
-        Gas firstGas = new Gas(type, temperature, volume ,molarQuantity);
-        ;
-        allGases.add(firstGas);
-        allTypes.add(firstGas.getType());
-        allMolarNumbers.add(firstGas.getMolarNumber());
-        this.volume = firstGas.getVolume();
-        this.temperature = firstGas.getTemperature();
-        this.pressure = firstGas.getPressure();
-        this.molarQuantity = firstGas.molarQuantity;
-        this.molarNumber = firstGas.molarNumber;
-        this.mass = firstGas.getMass();
-        this.specHeatCap = firstGas.getSpecHeatCap();
-        this.heatCapRatio = firstGas.getHeatCapRatio();
-
-    }
-
+    // Method which compress gas from cylinder to tank, she is composed by 2 steps.
     public void addGasToTank(String type, double temperature, double volume, double molarQuantity) {
+
         // This state reperesent cylinder connected to tank, but with closed valve.
+
         Gas nextGas = new Gas(type, temperature, volume, molarQuantity);
-        allGases.add(nextGas);
-        allTypes.add(nextGas.getType());
+
         // Summary volume of filled cylinder and tank.
-        temporaryVolume = nextGas.volume + this.volume;
-        // Special heat capacity and heat capacity ratio of mixture,
-        // as weighted average according to molar composition.
-        this.specHeatCap = averageSpecHeatCap();
-        this.heatCapRatio = averageHeatCapRatio();
-        // Tolar molar quantity and mass of gases compounds.
-        this.molarQuantity = totalMolarQuantity();
-        this.mass = totalMass();
+
+        temporaryVolume = nextGas.getVolume() + this.volume;
+
         // Parameters below represents state when we opening valve between cylinder and tank,
         // gas or gases diffuse freely and we have to evaluate temporary temperature and pressure.
-        this.temporaryTemperature = evaluateTemperatureWhileMixing(temperature, nextGas.temperature,
+
+        this.temporaryTemperature = evaluateTemperatureWhileMixing(this.temperature, nextGas.temperature,
                 summaryHeatCap(allGases), heatCap(nextGas));
-        this.temporaryPressure = pressureFromIdealGasEquation(temporaryVolume, temporaryTemperature);
+        this.molarQuantity = this.molarQuantity + nextGas.molarQuantity;
+        this.temporaryPressure = pressureFromIdealGasEquation(this.molarQuantity, this.temporaryVolume, this.temporaryTemperature);
+
+        // Now we added gas from cylinder to whole system.
+
+        allGases.add(nextGas);
+        allTypes.add(nextGas.getType());
+
+        // Special heat capacity, heat capacity ratio of mixture and molar number,
+        // as weighted average according to molar composition.
+
+        this.specHeatCap = averageSpecHeatCap();
+        this.heatCapRatio = averageHeatCapRatio();
+        this.molarNumber = averageMolarNumber();
+
+        // Tolar mass of gases compounds.
+
+        this.mass = totalMass();
+
         // Parameters below represents state, when we compress gas from cylinder into tank,
         // all process occurs without heat exchange with the surroundings.
-        this.pressure = finalPressureAdiabaticConversion(temporaryVolume, this.volume,
-                temporaryPressure, heatCapRatio);
+
+        this.pressure = finalPressureAdiabaticConversion(this.temporaryVolume, this.volume,
+                this.temporaryPressure, this.heatCapRatio);
         this.temperature = temperatureFromIdealGasEquation();
+
         // Evaluating of work done during compression.
-        this.totalWork += heatOfAdiabaticConversion(temporaryTemperature, this.temperature, this.specHeatCap );
-
-
+        this.compresionWork = heatOfAdiabaticConversion(this.molarQuantity,
+                this.temporaryTemperature, this.temperature, this.specHeatCap );
+        this.totalWork += this.compresionWork ;
     }
 
-    public void displayComposition() {
+    public void displayParameters() {
+
+        System.out.println("-- COMPOSITION OF MIXTURE --");
         for(Iterator i = allGases.iterator(); i.hasNext();) {
             Gas gas = (Gas) i.next();
-            System.out.println("Compound: " + gas.type + " | Molar quantity: " + gas.molarQuantity + " [mol]");
+            System.out.println("Compound: " + gas.getType() + " | Molar quantity: " + gas.getMolarQuantity() + " [mol]");
         }
-
-    }
-    public void displayParameters() {
-        System.out.println("-- COMPOSITION OF MIXTURE --");
-        displayComposition();
         System.out.println("-- PARAMETERS OF MIXTURE --");
         System.out.println("Mass[kg}: " +mass);
         System.out.println("Molar quantity[mol]: " +molarQuantity);
@@ -103,39 +97,46 @@ public class IsolatedTank extends IdealGas {
         System.out.println("Special heat capacity[J/(mol*K)]: " + specHeatCap);
         System.out.println("Heat capacity ratio[1]: " + heatCapRatio);
         System.out.println("Total work[j] : " + totalWork);
-
     }
 
-
-
-
     public double totalMolarQuantity() {
+
         double total = 0;
         for(Iterator i = allGases.iterator(); i.hasNext();) {
             Gas gas = (Gas) i.next();
-            total += gas.molarQuantity;
+            total += gas.getMolarQuantity();
         }
         return total;
     }
 
     public double totalMass() {
+
         double total = 0;
         for(Iterator i = allGases.iterator(); i.hasNext();) {
             Gas gas = (Gas) i.next();
-            total += gas.molarQuantity * gas.molarNumber;
+            total += gas.getMolarQuantity() * gas.getMolarNumber();
         }
         return total/1000;
-
     }
     public double averageSpecHeatCap() {
-        double average =0;
+
+        double average = 0;
         double totalMQ = totalMolarQuantity();
         for(Iterator i = allGases.iterator(); i.hasNext();) {
             Gas gas = (Gas) i.next();
-            average += gas.specHeatCap*(gas.molarQuantity /totalMQ);
+            average += gas.getSpecHeatCap()*(gas.getMolarQuantity() /totalMQ);
         }
         return average;
+    }
+    public double averageMolarNumber() {
 
+        double average = 0;
+        double totalMQ = totalMolarQuantity();
+        for(Iterator i = allGases.iterator(); i.hasNext();) {
+            Gas gas = (Gas) i.next();
+            average += gas.getMolarNumber()*(gas.getMolarQuantity() /totalMQ);
+        }
+        return average;
     }
 
     public double averageHeatCapRatio() {
@@ -190,41 +191,10 @@ public class IsolatedTank extends IdealGas {
         double finalPressure = initialPressure * Math.pow(initialToFinalVolumeRatio, heatCapRatio);
         return finalPressure;
     }
-    public double heatOfAdiabaticConversion(double initialTemperature, double finalTemperature,
+    public double heatOfAdiabaticConversion(double molarQuantity, double initialTemperature, double finalTemperature,
                                    double specHeatCap) {
-        double heat = specHeatCap*(finalTemperature - initialTemperature);
+        double heat = molarQuantity * specHeatCap*(finalTemperature - initialTemperature);
         return heat;
     }
 
-    public void saveData(String nazwa) throws IOException {
-        PrintWriter file = null;
-        try {
-
-            file = new PrintWriter(new FileWriter(nazwa, true));
-            file.println("Gonciarz");
-
-        } finally {
-            if (file != null) {
-                file.close();
-            }
-        }
-    }
-    public void readFile(String nazwa) throws IOException {
-
-        // odczyt wiersz po wierszu
-        BufferedReader file = null;
-        try {
-            file = new BufferedReader(new FileReader(nazwa));
-            System.out.println("\n\nOdczyt buforowany:\n");
-            String l = file.readLine();
-            while (l != null) {
-                System.out.println(l);
-                l = file.readLine();
-            }
-        } finally {
-            if (file != null) {
-                file.close();
-            }
-        }
-    }
 }

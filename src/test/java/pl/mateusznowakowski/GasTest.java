@@ -34,24 +34,6 @@ class GasTest {
     }
 
     @Test
-    void evaluatePressureTest() {
-        Gas carbon_monoxide = new Gas(
-                "carbon monoxide", 300, 0.0224, 2);
-        carbon_monoxide.evaluatePressure();
-
-        assertEquals(222710, Math.round(carbon_monoxide.getPressure()));
-    }
-
-    @Test
-    void evaluateMassTest() {
-        Gas nitrogen = new Gas("argon", 300, 0.1, 2.5);
-        nitrogen.evaluateMass();
-        double mass = nitrogen.getMass();
-        double number = (double) Math.round(mass * 10000000) / 10000000;
-        assertEquals(0.098375, number);
-    }
-
-    @Test
     void isDataCorrectTestNegativeMolarQuantity() {
         Gas gas = new Gas(" ", -1, 300, 0.1);
         assertThrows(NegativeNumberException.class, () -> {

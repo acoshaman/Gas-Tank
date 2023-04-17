@@ -27,11 +27,13 @@ public abstract class IdealGas {
 
 
     public double temperatureFromIdealGasEquation( ) {
+
         double temperature = (pressure*volume)/(molarQuantity*gasConstant);
         return temperature;
     }
 
     public double pressureFromIdealGasEquation( ) {
+
         double pressure = (molarQuantity*gasConstant*temperature)/volume;
         return pressure;
     }
@@ -51,12 +53,15 @@ public abstract class IdealGas {
         return mass;
     }
 
-    public abstract void displayParameters();
+    public double pressureFromIdealGasEquation(double molarQuantity, double summaryVolume, double temperature) {
 
-    public double pressureFromIdealGasEquation(double summaryVolume, double temperature) {
         double pressure;
         pressure = (molarQuantity * gasConstant * temperature)/ summaryVolume;
         return pressure;
     }
+
+    public abstract void displayParameters();
+
+
 
 }
