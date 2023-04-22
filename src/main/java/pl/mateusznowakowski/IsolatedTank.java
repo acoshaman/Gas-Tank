@@ -79,7 +79,53 @@ public class IsolatedTank extends IdealGas {
                 this.temporaryTemperature, this.temperature, this.specHeatCap );
         this.totalWork += this.compresionWork ;
     }
+    public void removeGasFromTank(double moleFractionToRemove) {
+     try {
+         double moleFractionToLeave = 1 - moleFractionToRemove;
+         double initialVolume = this.volume;
+         double initialPressure = this.pressure;
+         double initialTemperature = this.temperature;
+         this.molarQuantity = molarQuantity * moleFractionToLeave;
+         this.volume = volumeAfterExpansion(moleFractionToRemove, initialVolume);
+         double finalVolume = this.volume;
+         this.pressure = finalPressureAdiabaticConversion(initialVolume,
+                 finalVolume,initialPressure, this.heatCapRatio);
+         this.temperature = temperatureFromIdealGasEquation();
+         this.compresionWork = heatOfAdiabaticConversion(this.molarQuantity, initialTemperature,
+                 this.temperature, this.specHeatCap);
+         this.totalWork += this.compresionWork;
+     } catch (IOException ioe) {
+         System.out.println("Error: " + ioe.getMessage());
+     }
+    }
 
+    public static void main(String[] args) {
+        IsolatedTank tank = new IsolatedTank(0.1);
+        tank.pressure = 100000;
+        tank.temperature = 300;
+        tank.molarQuantity = 5;
+        tank.specHeatCap = 20;
+        tank.molarNumber = 10;
+        tank.heatCapRatio = 1.4;
+        tank.removeGasFromTank(0.2);
+
+    }
+
+    public double volumeAfterExpansion(double moleFractionToRemove,
+                                       double initialVolume) throws IOException {
+
+        if (moleFractionToRemove < 1 && moleFractionToRemove > 0) {
+            double moleFractionToLeave = 1 - moleFractionToRemove;
+            double expansionRatio = 1 + (moleFractionToRemove / moleFractionToLeave);
+            double finalVolume =expansionRatio * initialVolume;
+            return finalVolume;
+        } else {
+            System.out.println("Input for molar fraction has to be beetween 0 and 1.");
+            IOException ioException = new IOException();
+            throw ioException;
+        }
+
+    }
     public void displayParameters() {
 
         System.out.println("-- COMPOSITION OF MIXTURE --");
@@ -151,10 +197,9 @@ public class IsolatedTank extends IdealGas {
     }
 
     public double heatCap(Gas gas) {
-        double heatCap = gas.specHeatCap * gas.molarQuantity;
-        return heatCap;
+        return gas.specHeatCap * gas.molarQuantity;
     }
-
+    
     public double summaryHeatCap( ArrayList<Gas> componentList) {
         double heat = 0;
         for( Iterator i = componentList.iterator(); i.hasNext();) {

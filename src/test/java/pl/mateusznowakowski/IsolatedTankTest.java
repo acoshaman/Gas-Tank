@@ -230,6 +230,24 @@ class IsolatedTankTest {
         assertEquals(24.73, Round.roundToTwoDecimal(tank.getSpecHeatCap()));
         assertEquals(1.34, Round.roundToTwoDecimal(tank.getHeatCapRatio()));
     }
+
+    @Test
+    void removeGasFromTankTest() {
+        IsolatedTank tank = new IsolatedTank(0.1);
+        tank.pressure = 100000;
+        tank.temperature = 300;
+        tank.molarQuantity = 5;
+        tank.molarNumber = 6;
+        tank.specHeatCap = 20;
+        tank.molarNumber = 10;
+        tank.heatCapRatio = 1.4;
+        tank.removeGasFromTank(0.2);
+
+        assertEquals(73168.8, Round.roundToOneDecimal(tank.getPressure()));
+        assertEquals(275.005, Round.roundToThreeDecimal(tank.getTemperature()));
+        assertEquals(4, Round.roundToZeroDecimal(tank.getMolarQuantity()));
+        assertEquals(-1999.6, Round.roundToOneDecimal(tank.getCompresionWork()));
+    }
 }
 
 
