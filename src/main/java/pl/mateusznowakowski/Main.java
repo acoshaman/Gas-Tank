@@ -1,6 +1,7 @@
 package pl.mateusznowakowski;
 
 import java.io.IOException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -32,18 +33,25 @@ public class Main {
                             System.out.println("Enter type, temperature, volume, molar quantity" +
                                     " separated by a space");
                             System.out.println("(if type of gas is multiple, separate words with '_'");
+                            double temperature;
+                            double volume;
+                            double molarQuantity;
                             Scanner scanner1 = new Scanner(System.in);
                             String parameters = scanner1.nextLine();
                             StringTokenizer token = new StringTokenizer(parameters);
                             String type = token.nextToken();
-                            double temperature = Double.parseDouble(token.nextToken());
-                            double volume = Double.parseDouble(token.nextToken());
-                            double molarQuantity = Double.parseDouble(token.nextToken());
+                            temperature = Double.parseDouble(token.nextToken());
+                            volume = Double.parseDouble(token.nextToken());
+                            molarQuantity = Double.parseDouble(token.nextToken());
                             tank.addGasToTank(type, temperature, volume, molarQuantity);
                             readWrite.saveDataProcess(tank);
                             break;
                         } catch (NumberFormatException nfe) {
                             System.out.println("Invalid input. Please try again");
+                            System.out.println("");
+                        } catch (NoSuchElementException nsee) {
+                            System.out.println("Invalid input. Please try again");
+                            System.out.println("");
                         }
                     }
                     break;

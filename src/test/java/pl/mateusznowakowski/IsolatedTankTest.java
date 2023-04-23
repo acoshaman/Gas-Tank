@@ -10,40 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class IsolatedTankTest {
 
     @Test
-    void temperatureFromIdealGasEquation() {
-
-
-    }
-
-//    @Test
-//    void pressureFromIdealGasEquation() {
-//        IsolatedTank argon = new IsolatedTank("argon", 320, 0.2, 3);
-//        assertEquals(39909.6, argon.pressureFromIdealGasEquation());
-//    }
-
-//    @Test
-//    void volumeFromIdealGasEquation() {
-//        IsolatedTank argon = new IsolatedTank("argon", 320, 0.2, 3);
-//        argon.pressureFromIdealGasEquation();
-//        assertEquals(0.2, argon.volumeFromIdealGasEquation());
-//    }
-//
-//    @Test
-//    void molarQuantityFromIdealGasEquation() {
-//        IsolatedTank argon = new IsolatedTank("argon", 320, 0.2, 3);
-//        argon.pressureFromIdealGasEquation();
-//        assertEquals(3, Math.round(argon.molarQuantityFromIdealGasEquation()));
-//    }
-//
-//    @Test
-//    void massFromMolarParameters() {
-//        IsolatedTank tank = new IsolatedTank("argon", 320, 0.2, 3);
-//
-//        assertEquals(0.11805, Round.roundToFiveDecimal(tank.massFromMolarParameters()));
-//
-//    }
-
-    @Test
     void totalMolarQuantityTest() {
         IsolatedTank isolatedTank = new IsolatedTank(1);
         isolatedTank.addGasToTank("hydrogen", 300, 0.1, 1);
