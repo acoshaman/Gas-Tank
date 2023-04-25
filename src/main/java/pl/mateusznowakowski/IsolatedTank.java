@@ -99,18 +99,6 @@ public class IsolatedTank extends IdealGas {
      }
     }
 
-    public static void main(String[] args) {
-        IsolatedTank tank = new IsolatedTank(0.1);
-        tank.pressure = 100000;
-        tank.temperature = 300;
-        tank.molarQuantity = 5;
-        tank.specHeatCap = 20;
-        tank.molarNumber = 10;
-        tank.heatCapRatio = 1.4;
-        tank.removeGasFromTank(0.2);
-
-    }
-
     public double volumeAfterExpansion(double moleFractionToRemove,
                                        double initialVolume) throws IOException {
 

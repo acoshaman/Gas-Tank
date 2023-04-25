@@ -2,12 +2,12 @@ package pl.mateusznowakowski;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class IsolatedTankTest {
+
+
 
     @Test
     void totalMolarQuantityTest() {
@@ -22,7 +22,7 @@ class IsolatedTankTest {
     void totalMolarQuantityTest2() {
 
         IsolatedTank tank = new IsolatedTank(0.1);
-        tank.addGasToTank("carbon dioxide", 300, 0.1, 3);
+        tank.addGasToTank("carbon_dioxide", 300, 0.1, 3);
         tank.addGasToTank("ammonia", 250, 0.1, 5);
         tank.addGasToTank("nitrogen", 250, 0.1, 4);
         assertEquals(12, tank.totalMolarQuantity());
@@ -32,7 +32,7 @@ class IsolatedTankTest {
     void totalMass() {
 
         IsolatedTank tank = new IsolatedTank(0.1);
-        tank.addGasToTank("carbon dioxide", 300, 0.1, 3);
+        tank.addGasToTank("carbon_dioxide", 300, 0.1, 3);
         tank.addGasToTank("ammonia", 250, 0.1, 5);
         tank.addGasToTank("nitrogen", 250, 0.1, 4);
         double result = Round.roundToThreeDecimal(tank.totalMass());
@@ -52,7 +52,7 @@ class IsolatedTankTest {
     void averageSpecHeatCapTest2() {
 
         IsolatedTank tank = new IsolatedTank(0.1);
-        tank.addGasToTank("carbon dioxide", 300, 0.1, 3);
+        tank.addGasToTank("carbon_dioxide", 300, 0.1, 3);
         tank.addGasToTank("ammonia", 250, 0.1, 5);
         tank.addGasToTank("nitrogen", 250, 0.1, 4);
         double result = Round.roundToThreeDecimal(tank.averageSpecHeatCap());
@@ -72,7 +72,7 @@ class IsolatedTankTest {
     void averageHeatCapRatioTest2() {
 
         IsolatedTank tank = new IsolatedTank(0.1);
-        tank.addGasToTank("carbon dioxide", 300, 0.1, 3);
+        tank.addGasToTank("carbon_dioxide", 300, 0.1, 3);
         tank.addGasToTank("ammonia", 250, 0.1, 5);
         tank.addGasToTank("nitrogen", 250, 0.1, 4);
         double result = Round.roundToThreeDecimal(tank.averageHeatCapRatio());
@@ -144,7 +144,7 @@ class IsolatedTankTest {
     void heatCapTest() {
 
         IsolatedTank tank = new IsolatedTank(0.1);
-        tank.addGasToTank("carbon dioxide", 300, 0.1, 3);
+        tank.addGasToTank("carbon_dioxide", 300, 0.1, 3);
         Gas gas = (Gas) tank.getAllGases().get(0);
         double result = Round.roundToThreeDecimal(tank.heatCap(gas));
         assertEquals(85.38, result);
@@ -154,7 +154,7 @@ class IsolatedTankTest {
     void summaryHeatCap() {
 
         IsolatedTank tank = new IsolatedTank(0.1);
-        tank.addGasToTank("carbon dioxide", 300, 0.1, 3);
+        tank.addGasToTank("carbon_dioxide", 300, 0.1, 3);
         tank.addGasToTank("ammonia", 250, 0.1, 5);
         tank.addGasToTank("nitrogen", 250, 0.1, 4);
         double result = Round.roundToThreeDecimal(tank.summaryHeatCap(tank.getAllGases()));
@@ -174,7 +174,7 @@ class IsolatedTankTest {
     void averageMolarNumberTest() {
 
         IsolatedTank tank = new IsolatedTank(0.1);
-        tank.addGasToTank("carbon dioxide", 300, 0.1, 3);
+        tank.addGasToTank("carbon_dioxide", 300, 0.1, 3);
         tank.addGasToTank("ammonia", 250, 0.1, 5);
         tank.addGasToTank("nitrogen", 250, 0.1, 4);
         double result = Round.roundToFourDecimal(tank.averageMolarNumber());
@@ -185,7 +185,7 @@ class IsolatedTankTest {
     void addGasToTankTest() {
 
         IsolatedTank tank = new IsolatedTank(0.1);
-        tank.addGasToTank("carbon monoxide", 300, 0.05, 1);
+        tank.addGasToTank("carbon_monoxide", 300, 0.05, 1);
         tank.addGasToTank("methane", 280, 0.1,2);
         assertEquals(0.06, Round.roundToTwoDecimal(tank.getMass()));
         assertEquals(3, Round.roundToZeroDecimal(tank.getMolarQuantity()));

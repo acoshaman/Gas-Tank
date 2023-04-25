@@ -7,10 +7,10 @@ import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter tank's volume\n");
-        double v = Double.parseDouble(scanner.nextLine());
-        IsolatedTank tank = new IsolatedTank(v);
+        AuxiliaryMethodsForMain aMFM = new AuxiliaryMethodsForMain();
+        Scanner scanner = aMFM.scanner;
+        double initVolume = aMFM.inserVolumeWithExceptionLoop();
+        IsolatedTank tank = new IsolatedTank(initVolume);
         ReadWrite readWrite = new ReadWrite();
         readWrite.saveDataInitial(tank);
 

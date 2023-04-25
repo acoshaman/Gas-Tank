@@ -4,26 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f426c37-80fc-4567-8ec5-05197af650a3" name="Changes" comment="Working with Main method.">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+    <list default="true" id="2f426c37-80fc-4567-8ec5-05197af650a3" name="Changes" comment="Repaired bugs for test methods.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/gas-tank-db.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/src/main/java/pl/mateusznowakowski/DbInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/src/main/java/pl/mateusznowakowski/Gas.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/src/main/java/pl/mateusznowakowski/Help.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/src/main/java/pl/mateusznowakowski/IsolatedTank.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/src/main/java/pl/mateusznowakowski/NagativeNumberException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/src/test/java/pl/mateusznowakowski/DbInterfaceTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gas-Tank/src/test/java/pl/mateusznowakowski/GasTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/AuxiliaryMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/AuxiliaryMethods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/mateusznowakowski/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proba" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pl/mateusznowakowski/IsolatedTankTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/pl/mateusznowakowski/IsolatedTankTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/pl/mateusznowakowski/IsolatedTankTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,33 +65,7 @@
       <recent name="pl.mateusznowakowski" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.IsolatedTankTest">
-    <configuration name="IsolatedTank" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.IsolatedTank" />
-      <module name="Tank" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.mateusznowakowski.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.Main" />
-      <module name="Tank" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pl.mateusznowakowski.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ReadWriteTest.createTypeList">
     <configuration name="IsolatedTankTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Tank" />
       <extension name="coverage">
@@ -138,7 +97,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="IsolatedTankTest.removeGasFromTankTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IsolatedTankTest.averageHeatCapRatioTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Tank" />
       <extension name="coverage">
         <pattern>
@@ -148,7 +107,38 @@
       </extension>
       <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
       <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.IsolatedTankTest" />
-      <option name="METHOD_NAME" value="removeGasFromTankTest" />
+      <option name="METHOD_NAME" value="averageHeatCapRatioTest2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReadWriteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Tank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.mateusznowakowski.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
+      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.ReadWriteTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReadWriteTest.createTypeList" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Tank" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.mateusznowakowski.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.mateusznowakowski" />
+      <option name="MAIN_CLASS_NAME" value="pl.mateusznowakowski.ReadWriteTest" />
+      <option name="METHOD_NAME" value="createTypeList" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -156,10 +146,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ReadWriteTest.createTypeList" />
+        <item itemvalue="JUnit.ReadWriteTest" />
         <item itemvalue="JUnit.IsolatedTankTest" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.IsolatedTankTest.removeGasFromTankTest" />
-        <item itemvalue="Application.IsolatedTank" />
+        <item itemvalue="JUnit.IsolatedTankTest.averageHeatCapRatioTest2" />
         <item itemvalue="JUnit.IsolatedTankTest.addGasToTankTest" />
       </list>
     </recent_temporary>
