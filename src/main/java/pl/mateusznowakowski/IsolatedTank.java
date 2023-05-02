@@ -18,7 +18,6 @@ public class IsolatedTank extends IdealGas {
     private double compresionWork;
     private ArrayList<String> allTypes = new ArrayList<String>();
 
-    private ArrayList<Double> allMolarNumbers = new ArrayList<Double>();
     private ArrayList<Gas> allGases = new ArrayList<Gas>();
 
     // Constructor which determinate only of his volume.
@@ -122,35 +121,35 @@ public class IsolatedTank extends IdealGas {
             System.out.println("Compound: " + gas.getType() + " | Molar quantity: " + gas.getMolarQuantity() + " [mol]");
         }
         System.out.println("-- PARAMETERS OF MIXTURE --");
-        System.out.println("Mass[kg}: " +mass);
-        System.out.println("Molar quantity[mol]: " +molarQuantity);
-        System.out.println("Molar number[kg/mol]: " + (molarNumber / 1000));
-        System.out.println("Temperature[K]: " + temperature);
-        System.out.println("Pressure[Pa]: " + pressure);
-        System.out.println("Volume[m^3]: " + volume);
-        System.out.println("Special heat capacity[J/(mol*K)]: " + specHeatCap);
-        System.out.println("Heat capacity ratio[1]: " + heatCapRatio);
-        System.out.println("Total work[j] : " + totalWork);
+        System.out.println("Mass[kg}: " +Round.roundToFourDecimal(mass));
+        System.out.println("Molar quantity[mol]: " +Round.roundToThreeDecimal(molarQuantity));
+        System.out.println("Molar number[kg/mol]: " + Round.roundToFourDecimal(molarNumber / 1000));
+        System.out.println("Temperature[K]: " + Round.roundToFourDecimal(temperature));
+        System.out.println("Pressure[Pa]: " + Round.roundToFourDecimal(pressure));
+        System.out.println("Volume[m^3]: " + Round.roundToFourDecimal(volume));
+        System.out.println("Special heat capacity[J/(mol*K)]: " + Round.roundToFourDecimal(specHeatCap));
+        System.out.println("Heat capacity ratio[1]: " + Round.roundToFourDecimal(heatCapRatio));
+        System.out.println("Total work[j] : " + Round.roundToFourDecimal(totalWork));
     }
 
     public double totalMolarQuantity() {
 
-        double total = 0;
+        double totalMQ = 0;
         for(Iterator i = allGases.iterator(); i.hasNext();) {
             Gas gas = (Gas) i.next();
-            total += gas.getMolarQuantity();
+            totalMQ += gas.getMolarQuantity();
         }
-        return total;
+        return totalMQ;
     }
 
     public double totalMass() {
 
-        double total = 0;
+        double totalM = 0;
         for(Iterator i = allGases.iterator(); i.hasNext();) {
             Gas gas = (Gas) i.next();
-            total += gas.getMolarQuantity() * gas.getMolarNumber();
+            totalM += gas.getMolarQuantity() * gas.getMolarNumber();
         }
-        return total/1000;
+        return totalM/1000;
     }
     public double averageSpecHeatCap() {
 
